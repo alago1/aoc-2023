@@ -1,9 +1,15 @@
 from collections import defaultdict, Counter, deque
 from itertools import combinations, takewhile
-from functools import lru_cache
+from functools import lru_cache, reduce
 from math import gcd, prod
 from copy import deepcopy
 import re
+
+try:
+    from math import lcm
+except ImportError:
+    def lcm(*args):
+        return reduce(lambda x, y: abs(x * y) // gcd(x, y), args)
 
 # types: % flipflop, & conjunction, broadcast
 
@@ -141,7 +147,7 @@ def part2(types, dests):
 
             cycle_sizes.add(diff[0])
     
-    return int(abs(prod(cycle_sizes)) / gcd(*cycle_sizes))
+    return lcm(*cycle_sizes)
 
 if __name__ == '__main__':
     types, dests = parse('input.txt')
