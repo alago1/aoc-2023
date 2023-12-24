@@ -89,7 +89,7 @@ def part2(types, dests):
                 conjunction_inputs[dest].append(name)
                 conjunction_memory[(dest, name)] = 0
 
-    rx_conj = list([name for name, mod_type in types.items() if mod_type == '&' and 'rx' in dests[name]])[0]
+    rx_conj = next(name for name, mod_type in types.items() if mod_type == '&' and 'rx' in dests[name])
     key_modules = [mod_name for mod_name, _ in dests.items() if rx_conj in dests[mod_name]]
 
     cycles = {name: set() for name in key_modules}
