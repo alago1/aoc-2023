@@ -153,7 +153,6 @@ def part1(grid, start):
         length, path = follow_path(grid, new_pos, cardinal_dir)
 
         if length != -1:
-            print(f'Cardinal dir: {cardinal_dir}, length: {length}')
             paths.append(path)
             lengths.append(length)
     
@@ -161,7 +160,6 @@ def part1(grid, start):
     for pos in paths[0]:
         path_grid[pos[0]][pos[1]] = grid[pos[0]][pos[1]]
 
-    print(lengths)
     return max(lengths)
 
 def part2(grid, start):
@@ -201,7 +199,6 @@ def part2(grid, start):
             if path_grid[i][j] in verticals:
                 vert_count += 1
             elif path_grid[i][j] == '.' and vert_count % 2 == 1:
-                print(f'({i}, {j})')
                 count += 1
 
     return count        
