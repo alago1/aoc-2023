@@ -35,7 +35,7 @@ def parse(filename):
     
     return types, dests
 
-def part1(types: dict[str, str], dests: dict[str, tuple[str]]) -> int:
+def part1(types, dests):
     flipflops = {name: 0 for name, mod_type in types.items() if mod_type == '%'}
     conjunction_inputs = {name: [] for name, mod_type in types.items() if mod_type == '&'}
     conjunction_memory = {}

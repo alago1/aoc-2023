@@ -5,9 +5,6 @@ from math import gcd, prod
 from copy import deepcopy
 import re
 
-Range = tuple[int, int]
-XMASRange = tuple[Range, Range, Range, Range]
-
 def parse_workflow(workflow):
     bracket_index = workflow.index('{')
     name = workflow[:bracket_index]
@@ -44,7 +41,7 @@ def part1(workflows, parts):
     
     return sum_parts
 
-def split_branch_ranges(char, op, num, xmas_ranges: XMASRange):
+def split_branch_ranges(char, op, num, xmas_ranges):
     thresh = num + 1 if op == '>' else num
 
     passing_ranges = list(xmas_ranges)
@@ -62,7 +59,7 @@ def split_branch_ranges(char, op, num, xmas_ranges: XMASRange):
 def count_range_combs(x_range, m_range, a_range, s_range):
     return (x_range[1] - x_range[0]) * (m_range[1] - m_range[0]) * (a_range[1] - a_range[0]) * (s_range[1] - s_range[0])
 
-def count_workflow_combs(workflows, wkflw, xmas_ranges: XMASRange):
+def count_workflow_combs(workflows, wkflw, xmas_ranges):
     if wkflw == 'R':
         return 0
     
